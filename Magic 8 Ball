@@ -1,0 +1,212 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- c:out ; c:forEach etc. -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Formatting (dates) -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!-- form:form -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- for rendering errors on PUT routes -->
+<%@ page isErrorPage="true" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Magic 8 Ball</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            font-family: Charm;
+        }
+        body{
+            background: linear-gradient(90deg, #4568dc, #b06ab3);
+        }
+        #content{
+            background: transparent;
+            width: 450px;
+            margin: auto;
+            text-align: center;
+            margin-top: 50px;
+        }
+        textarea{
+            background: transparent;
+            border: solid 1px whitesmoke;
+            color: white;
+            height: 80px;
+        }
+        #answer{
+            font-size: 15px;
+            color: white;
+            margin-top: -228px;
+            vertical-align: text-after-edge;
+            text-shadow: 2px 2px 4px #000000;
+
+        }
+        h1{
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        h2{
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        button{
+            background: transparent;
+            box-shadow: 5px 5px;
+            margin-top: 10px;
+        }
+        #ball{
+            height: 400px;
+            width: 400px;
+            margin: auto;
+
+        }
+        #eightBall{
+            margin-top: 20px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div id="content">
+<h1>Magic 8 Ball</h1>
+    <h2>Type your question below:</h2>
+    <textarea name="questionArea" id="questionArea" cols="30" rows="10"></textarea>
+    <br>
+    <button>Shake!</button>
+    <div id="eightBall">
+        <img id="ball" src="/magic.png" alt="">
+        <p id="answer"></p>
+    </div>
+</div>
+<script type="text/javascript">
+    //Create a random number function
+    function generate_random(max_number) {
+        //Generate a random number from 0 to max_number
+        return Math.round(Math.random()*max_number);
+
+    }
+//select the elements on the page to interact with
+let button = document.querySelector("button");
+let answer = document.querySelector("#answer");
+
+// Add a click event to the button
+button.addEventListener("click", function () {
+    //Your procedure goes here.
+    //0 -> "It is certain"
+    //1 -> "Try again"
+    //2 -> "Don’t count on it"
+    //3 -> "It is decidedly so"
+    //4 -> "Ask again later"
+    //5 -> "My reply is no"
+    //6 -> "Without a doubt"
+    //7 -> "Tell you later"
+    //8 -> "No"
+    //9 -> "Yes definitely"
+    //10 -> "Can't predict now"
+    //11 -> "Outlook not good"
+    //12 -> "Count on it"
+    //13 -> "Ask again"
+    //14 -> "Very doubtful"
+    //15 -> "As I see it, yes"
+    //16 -> "Most likely"
+    //17 -> "Outlook good"
+    //18 -> "Yes"
+    //19 -> "Signs point to yes"
+
+    //Generate a random number
+    let randomNumber = generate_random(19);
+
+    //Turn the random number into an answer using the key above
+    let answerText = "";
+
+    if (randomNumber == 0) {
+        //procedure to run if the condition is true
+        answerText = "It is certain";
+    }
+    else if (randomNumber == 1) {
+        //procedure to run if the condition is true
+        answerText = "Try again";
+    }
+    else if (randomNumber == 2) {
+        //procedure to run if the condition is true
+        answerText = "Don’t count on it";
+    }
+    else if (randomNumber == 3) {
+        //procedure to run if the condition is true
+        answerText = "It is decidedly so";
+    }
+    else if (randomNumber == 4) {
+        //procedure to run if the condition is true
+        answerText = "Ask again later";
+    }
+    else if (randomNumber == 5) {
+        //procedure to run if the condition is true
+        answerText = "My reply is no";
+    }
+    else if (randomNumber == 6) {
+        //procedure to run if the condition is true
+        answerText = "Without a doubt";
+    }
+    else if (randomNumber == 7) {
+        //procedure to run if the condition is true
+        answerText = "Tell you later";
+    }
+    else if (randomNumber == 8) {
+        //procedure to run if the condition is true
+        answerText = "No";
+    }
+    else if (randomNumber == 9) {
+        //procedure to run if the condition is true
+        answerText = "Yes definitely";
+    }
+    else if (randomNumber == 10) {
+        //procedure to run if the condition is true
+        answerText = "Can't predict now";
+    }
+    else if (randomNumber == 11) {
+        //procedure to run if the condition is true
+        answerText = "Outlook not good";
+    }
+    else if (randomNumber == 12) {
+        //procedure to run if the condition is true
+        answerText = "Count on it";
+    }
+    else if (randomNumber == 13) {
+        //procedure to run if the condition is true
+        answerText = "Ask again";
+    }
+    else if (randomNumber == 14) {
+        //procedure to run if the condition is true
+        answerText = "Very doubtful";
+    }
+    else if (randomNumber == 15) {
+        //procedure to run if the condition is true
+        answerText = "As I see it, yes";
+    }
+    else if (randomNumber == 16) {
+        //procedure to run if the condition is true
+        answerText = "Most likely";
+    }
+    else if (randomNumber == 17) {
+        //procedure to run if the condition is true
+        answerText = "Outlook good";
+    }
+    else if (randomNumber == 18) {
+        //procedure to run if the condition is true
+        answerText = "Yes";
+    }
+   else {
+        answerText = "Signs point to yes";
+    }
+    //Display the answer in the answer paragraph
+    answer.innerHTML = answerText;
+
+});
+</script>
+</body>
+</html>
